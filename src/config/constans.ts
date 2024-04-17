@@ -1,4 +1,11 @@
-export const pokeColors = {
+export interface PokeColors {
+  [key: string]: {
+    background: string
+    color: string
+  }
+}
+
+export const pokeColors: PokeColors = {
   bug: { background: '#739f40', color: '#fff' },
   dark: { background: '#707070', color: '#fff' },
   dragon: { background: 'linear-gradient(#54a4cf, #f16e58)', color: '#fff' },

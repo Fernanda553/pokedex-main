@@ -2,6 +2,10 @@ import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { PokemonContext } from '../context/PokemonContex'
 import { pokeColors } from '../config/constans'
+import './index'
+import PokeStats from '../components/PokeCard/PokeStats/PokeStats'
+import PokeAbout from '../components/PokeCard/PokeAbout/PokeAbout'
+import { Container } from 'react-bootstrap'
 
 const OnePokemon: React.FC = () => {
   const { pokemon, getOnePokemon } = useContext(PokemonContext)
@@ -14,26 +18,30 @@ const OnePokemon: React.FC = () => {
   }, [name])
 
   return (
-    <div className='d-flex justify-content-center mt-4'>
-      <div className='d-flex'>
-        <img
-          className='p-4'
-          style={{ width: '22rem' }}
-          src={pokemon?.sprites.other.dream_world.front_default}
-          alt={`Pokemon${pokemon?.name}`}
-        />
-        <div className='text-center'>
-          <h3 className='poke-name'>{pokemon?.name}</h3>
-          <div className='text-start'>
-            <ul>
-              {pokemon?.stats?.map(({ base_stat: value, stat: { name } }) => (
-                <li key={name}>{name}: <span>{value}</span></li>
-              ))}
-            </ul>
-          </div>
+    <>
+      <Container className='poke-card'>
+        <div className='poke-card--header'>
+          <p className='poke-name'>
+            {pokemon?.name}
+          </p>
+          <span className='poke-id'>#{pokemon?.id.toString().padStart(4, '0')}</span>
         </div>
-      </div>
-    </div>
+        <div className='poke-card--body'>
+          <img src={pokemon?.sprites?.other['official-artwork']?.front_default} alt={pokemon?.name} className='home-img' />
+          <div className='poke-card--body-types'>
+            {pokemon?.types.map((t) => {
+              return (
+                <span key={t.type.name} style={pokeColors[t.type.name]}>
+                  {t.type.name}
+                </span>
+              )
+            })}
+          </div>
+          <PokeAbout colorBase={colorBase} pokemon={pokemon} />
+          <PokeStats colorBase={colorBase} pokemon={pokemon} />
+        </div>
+      </Container>
+    </>
   )
 }
 
