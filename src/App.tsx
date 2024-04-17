@@ -8,8 +8,21 @@ import { usePokemones } from './hooks/usePokemones'
 import { PokemonContext } from './context/PokemonContex'
 
 const App: React.FC = () => {
-  const { data } = usePokemones()
-  const allState = { data }
+  const {
+    data,
+    setData,
+    pokemon,
+    setPokemon,
+    getOnePokemon
+  } = usePokemones()
+
+  const allState = {
+    data,
+    setData,
+    pokemon,
+    setPokemon,
+    getOnePokemon
+  }
 
   return (
     <PokemonContext.Provider value={allState}>

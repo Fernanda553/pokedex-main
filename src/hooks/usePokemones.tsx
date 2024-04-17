@@ -33,9 +33,9 @@ export const usePokemones = (): PropsPokemons => {
     getData()
   }, [])
 
-  const getOnePokemon = (name: string | undefined): void => {
+  const getOnePokemon = (name: string): void => {
     axios
-      .get(`${URL_POKEMONS}/pokemon/${name}`)
+      .get(`${URL_POKEMONS}/${name}`)
       .then(response => {
         const data: IPokemon = response.data
         setPokemon(data)

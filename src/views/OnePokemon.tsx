@@ -11,17 +11,17 @@ const OnePokemon: React.FC = () => {
   }, [name])
 
   return (
-    <div className="d-flex justify-content-center mt-4">
-      <div className="d-flex">
+    <div className='d-flex justify-content-center mt-4'>
+      <div className='d-flex'>
         <img
-          className="p-4"
+          className='p-4'
           style={{ width: '22rem' }}
           src={pokemon?.sprites.other.dream_world.front_default}
           alt={`Pokemon${pokemon?.name}`}
         />
-        <div className="text-center">
-          <h3 className="poke-name">{pokemon?.name}</h3>
-          <div className="text-start">
+        <div className='text-center'>
+          <h3 className='poke-name'>{pokemon?.name}</h3>
+          <div className='text-start'>
             <ul>
               {pokemon?.stats?.map(({ base_stat: value, stat: { name } }) => (
                 <li key={name}>{name}: <span>{value}</span></li>

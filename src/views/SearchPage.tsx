@@ -1,5 +1,5 @@
 import React, { type FormEvent, useContext, useState } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Container, Form } from 'react-bootstrap'
 import { PokemonContext } from '../context/PokemonContex'
 import { useNavigate } from 'react-router-dom'
 
@@ -17,16 +17,14 @@ const SearchPage: React.FC = () => {
   }
 
   return (
-    <div className='text-center'>
-      <h1 className='m-3'>Selecciona tu Pokémon</h1>
-      <Form onSubmit={handleSubmit}>
+    <Container className='text-center mt-5'>
+      <h1 className='mb-4'>Selecciona tu Pokémon</h1>
+      <Form onSubmit={handleSubmit} className='d-flex flex-column align-items-center'>
         <Form.Group className='mb-3'>
           <Form.Select
-            className='m-auto text-center'
-            style={{ width: '30rem' }}
-            aria-label='Default select example'
+            style={{ maxWidth: '300px' }}
             value={pokemon}
-            onChange={(e) => { setPokemon(e.target.value) }}
+            onChange={(e) => setPokemon(e.target.value)}
           >
             <option disabled value=''>Selecciona un Pokémon</option>
             {data?.results?.map((pokemon) => (
@@ -40,7 +38,7 @@ const SearchPage: React.FC = () => {
           Ver detalle
         </Button>
       </Form>
-    </div>
+    </Container>
   )
 }
 
