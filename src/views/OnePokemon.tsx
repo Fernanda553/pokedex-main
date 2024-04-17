@@ -1,10 +1,13 @@
 import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { PokemonContext } from '../context/PokemonContex'
+import { pokeColors } from '../config/constans'
 
 const OnePokemon: React.FC = () => {
   const { pokemon, getOnePokemon } = useContext(PokemonContext)
   const { name } = useParams()
+  const pokeColor = pokeColors[pokemon?.types[0]?.type?.name]
+  const colorBase = { color: pokeColor?.background }
 
   useEffect(() => {
     getOnePokemon(name)
