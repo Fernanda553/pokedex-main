@@ -11,7 +11,7 @@ export const usePokemones = (): PropsPokemons => {
 
   const getData = (): void => {
     axios
-      .get(`${URL_POKEMONS}?limit=10`)
+      .get(`${URL_POKEMONS}?limit=100`)
       .then(response => {
         const data: IPokemons = response.data
         const allPokemon: IPokemons = {
