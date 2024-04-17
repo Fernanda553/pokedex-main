@@ -1,8 +1,11 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 const NotFound: React.FC = () => {
   return (
-    <h1>Not Found</h1>
+    <Container className='d-flex flex-column gap-4 justify-content-center align-items-center h-auto'>
+      NotFound
+    </Container>
   )
 }
 
