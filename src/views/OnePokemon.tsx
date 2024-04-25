@@ -18,30 +18,28 @@ const OnePokemon: React.FC = () => {
   }, [name])
 
   return (
-    <>
-      <Container className='poke-card'>
-        <div className='poke-card--header'>
-          <p className='poke-name'>
-            {pokemon?.name}
-          </p>
-          <span className='poke-id'>#{pokemon?.id.toString().padStart(4, '0')}</span>
+    <Container className='poke-card'>
+      <div className='poke-card--header'>
+        <p className='poke-name'>
+          {pokemon?.name}
+        </p>
+        <span className='poke-id'>#{pokemon?.id.toString().padStart(4, '0')}</span>
+      </div>
+      <div className='poke-card--body'>
+        <img src={pokemon?.sprites?.other['official-artwork']?.front_default} alt={pokemon?.name} className='home-img' />
+        <div className='poke-card--body-types'>
+          {pokemon?.types.map((t) => {
+            return (
+              <span key={t.type.name} style={pokeColors[t.type.name]}>
+                {t.type.name}
+              </span>
+            )
+          })}
         </div>
-        <div className='poke-card--body'>
-          <img src={pokemon?.sprites?.other['official-artwork']?.front_default} alt={pokemon?.name} className='home-img' />
-          <div className='poke-card--body-types'>
-            {pokemon?.types.map((t) => {
-              return (
-                <span key={t.type.name} style={pokeColors[t.type.name]}>
-                  {t.type.name}
-                </span>
-              )
-            })}
-          </div>
-          <PokeAbout colorBase={colorBase} pokemon={pokemon} />
-          <PokeStats colorBase={colorBase} pokemon={pokemon} />
-        </div>
-      </Container>
-    </>
+        <PokeAbout colorBase={colorBase} pokemon={pokemon} />
+        <PokeStats colorBase={colorBase} pokemon={pokemon} />
+      </div>
+    </Container>
   )
 }
 
